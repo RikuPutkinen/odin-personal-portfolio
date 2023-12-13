@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-gradient-color: hsl(120deg, 30%, 10%)
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -12,14 +16,14 @@ body {
 
   background-image: repeating-linear-gradient(
     90deg,  
-  rgb(0, 40, 0) 0,
-  rgb(0, 40, 0) 0.3vw,
+    var(--bg-gradient-color) 0,
+    var(--bg-gradient-color) 0.3vw,
     transparent 0.3vw,
     transparent 2vw
   ),
   repeating-linear-gradient(  
-  rgb(0, 40, 0) 0,
-  rgb(0, 40, 0) 0.3vw,
+    var(--bg-gradient-color) 0,
+    var(--bg-gradient-color) 0.3vw,
     transparent 0.3vw,
     transparent 2vw
   );
@@ -35,7 +39,7 @@ h3 {
 }
 
 .container {
-  max-width: 1000px;
+  width: min(1000px, 100%);
   background-color: rgb(30,30,30);
   padding: 0 2rem;
 }
@@ -55,6 +59,7 @@ g {
 }
 
 header {
+  margin-top: 2rem;
   padding: 1rem;
 }
 
@@ -63,25 +68,61 @@ header > div {
   justify-content: right;
 }
 
-.project-grid {
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
 }
 
+.gap-0 {
+  gap: 0;
+}
+
+.border-tl {
+  border-top:hsl(0, 0%, 90%) solid 1px;
+  border-left:hsl(0, 0%, 90%) solid 1px;
+}
+
+.border-br {
+  border-right:hsl(0, 0%, 90%) solid 1px;
+  border-bottom:hsl(0, 0%, 90%) solid 1px;
+}
+
+.p-box {
+  padding: 1rem;
+}
+
+li {
+  line-height: 1.5;
+}
+
 .project-card {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  gap: 0rem;
   margin: 0;
   padding: 0;
 }
 
-.project-card > img {
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container > img, .project-card > img {
   width: 100%;
 }
 
-.project-card > div {
+.card-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.links {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .project-card > div,
@@ -99,16 +140,22 @@ a {
 
 address {
   line-height: 1.5rem;
-}
-
-address > div {
-  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 footer {
   padding: 1rem;
   padding-top: 1rem;
   margin-top: 1rem;
+}
+
+.text-center {
+  text-align: center;
+  > p {
+    margin: 0;
+    line-height: 1.5;
+  }
 }
 
 footer > h2 {
